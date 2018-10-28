@@ -11,4 +11,4 @@ function make(...args) {
   return innerMake(...args);
 }
 
-module.exports = { make };
+module.exports = make;
