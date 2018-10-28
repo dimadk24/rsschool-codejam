@@ -1,5 +1,6 @@
 const assert = require('assert');
 const recursion = require('./recursion');
+const { hasChildren } = require('./helpers');
 
 describe('recursion', function () {
   it('should flatten simple tree', function () {
@@ -7,7 +8,7 @@ describe('recursion', function () {
     const arr = [[100]];
     assert.deepEqual(recursion(tree), arr);
   });
-  it('should flatten a bit more complex tree', function () {
+  it('should flatten average tree', function () {
     const tree = { value: 100, left: { value: 90 }, right: { value: 120 } };
     const arr = [
       [100],
@@ -130,5 +131,18 @@ describe('recursion', function () {
       [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
     ];
     assert.deepEqual(recursion(tree), arr);
+  });
+});
+
+describe('helpers', function () {
+  describe('hasChildren', function () {
+    it('should have children', function () {
+      const tree = { value: 1, left: { value: 2 }, right: { value: 3 } };
+      assert(hasChildren(tree));
+    });
+    it('should not have children', function () {
+      const tree = { value: 1 };
+      assert(!hasChildren(tree));
+    });
   });
 });

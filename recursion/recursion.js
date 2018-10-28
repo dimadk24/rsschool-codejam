@@ -1,5 +1,7 @@
+const { hasChildren } = require('./helpers');
+
 function recursion(tree) {
-  if (!(tree.left && tree.right)) {
+  if (!hasChildren(tree)) {
     return [[tree.value]];
   }
   const left = recursion(tree.left);
@@ -7,7 +9,7 @@ function recursion(tree) {
   const arr = [];
   arr.push([tree.value]);
   for (let i = 0; i < left.length; i += 1) {
-    arr.push([...left[i].concat(...right[i])]);
+    arr.push(left[i].concat(right[i]));
   }
   return arr;
 }
