@@ -4,8 +4,8 @@
   "description": "RSSchool code jam #3",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
-    "test": "mocha"
+    "lint": "eslint ./*/*.js",
+    "test": "mocha ./*/*.test.js"
   },
   "repository": {
     "type": "git",
